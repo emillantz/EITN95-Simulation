@@ -1,4 +1,6 @@
-// Denna klass definerar vad som ska finnas i en signal. Det som finns här är ett minimum. Man kan lägga till mer
+package assignment1.assignment.src.main.java.assignment1.processinteraction;
+
+// Denna klass definerar vad som ska finnas i en signal. Det som finns har ar ett minimum. Man kan lagga till mer
 // om man vill att en signal ska kunna skicka mer information.
 
 // This class defines a signal. What can be seen here is a mainimum. If one wants to add more

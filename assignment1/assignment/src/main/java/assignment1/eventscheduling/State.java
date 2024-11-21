@@ -1,23 +1,25 @@
+package assignment1.assignment.src.main.java.assignment1.eventscheduling;
+
 import java.util.*;
 import java.io.*;
 
-class State extends GlobalSimulation{
+public class State extends GlobalSimulation{
 	
 	// Here follows the state variables and other variables that might be needed
 	// e.g. for measurements
 	public int numberInQueue = 0, accumulated = 0, noMeasurements = 0;
 
-	Random slump = new Random(); // This is just a random number generator
+	public Random slump = new Random(); // This is just a random number generator
 	
 	
 	// The following method is called by the main program each time a new event has been fetched
 	// from the event list in the main loop. 
 	public void treatEvent(Event x){
 		switch (x.eventType){
-			case ARRIVAL:
+			case Q1_ARRIVAL:
 				arrival();
 				break;
-			case READY:
+			case Q1_READY:
 				ready();
 				break;
 			case MEASURE:
@@ -33,15 +35,15 @@ class State extends GlobalSimulation{
 	
 	private void arrival(){
 		if (numberInQueue == 0)
-			insertEvent(READY, time + 2*slump.nextDouble());
+			insertEvent(Q1_READY, time + 2*slump.nextDouble());
 		numberInQueue++;
-		insertEvent(ARRIVAL, time + 2.5*slump.nextDouble());
+		insertEvent(Q1_ARRIVAL, time + 2.5*slump.nextDouble());
 	}
 	
 	private void ready(){
 		numberInQueue--;
 		if (numberInQueue > 0)
-			insertEvent(READY, time + 2*slump.nextDouble());
+			insertEvent(Q1_READY, time + 2*slump.nextDouble());
 	}
 	
 	private void measure(){

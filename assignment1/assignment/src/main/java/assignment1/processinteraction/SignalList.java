@@ -1,5 +1,7 @@
-// Denna klass definierar signallistan. Om man vill skicka mer information i signalen än minimum, så kan
-// man skriva ytterligare variante av SendSignal som innehåller fler parametrar.
+package assignment1.assignment.src.main.java.assignment1.processinteraction;
+
+// Denna klass definierar signallistan. Om man vill skicka mer information i signalen an minimum, sa kan
+// man skriva ytterligare variante av SendSignal som innehaller fler parametrar.
 
 // This class defines the signal list. If one wants to send more information than here,
 // one can add the extra information in the Signal class and write an extra sendSignal method 

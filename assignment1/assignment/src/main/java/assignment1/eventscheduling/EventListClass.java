@@ -1,3 +1,5 @@
+package assignment1.assignment.src.main.java.assignment1.eventscheduling;
+
 
 public class EventListClass {
 	
