@@ -3,10 +3,7 @@ package assignment1.assignment.src.main.java.assignment1.tasks.task3;
 import assignment1.assignment.src.main.java.assignment1.eventscheduling.State;
 import assignment1.assignment.src.main.java.assignment1.eventscheduling.Event;
 
-import java.util.Stack;
-
-import java.util.List;
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 class TaskState extends State {
     private final int MEASURE_TIME_MEAN = 5, SERVICE_TIME_MEAN = 1;;
@@ -17,7 +14,7 @@ class TaskState extends State {
 
     private int q1Size, q2Size, completed;
 
-    private List<Double> arrivals = new ArrayList<>();
+    private LinkedList<Double> arrivals = new LinkedList<>();
 
     
     public TaskState(double x) {
@@ -52,7 +49,7 @@ class TaskState extends State {
         this.q1Size++;
         insertEvent(Q1_ARRIVAL, time + exp(x));
 
-        arrivals.add(time);
+        arrivals.push(time);
     }
 
     private void q2Arrive() {
@@ -78,7 +75,10 @@ class TaskState extends State {
             insertEvent(Q2_READY, time + exp(SERVICE_TIME_MEAN));
         }
 
-        double arrivalTime = arrivals.remove(0);
+        Double arrivalTime = arrivals.poll();
+        if (arrivalTime == null) {
+            return;
+        }
         this.simTime += time - arrivalTime;
         this.completed++;
     }
@@ -101,7 +101,7 @@ class TaskState extends State {
         return this.simTime;
     }
 
-    public int getAccumulated() {
+    public double getAccumulated() {
         return this.accumulated;
     }
 

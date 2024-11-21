@@ -29,7 +29,7 @@ public class Task3 extends GlobalSimulation{
         insertEvent(Q1_ARRIVAL, 0);
         insertEvent(MEASURE, 5);
 
-        while (state.getNbrMeasurements() < 2000) {
+        while (state.getNbrMeasurements() < 2500) {
             actEvent = eventList.fetchEvent();
             time = actEvent.eventTime;
             state.treatEvent(actEvent);
