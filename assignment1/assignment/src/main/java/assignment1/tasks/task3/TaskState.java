@@ -41,7 +41,7 @@ class TaskState extends State {
     //Lecture 3
     private double exp(double lambda) {
         double y = slump.nextDouble();
-        return (-1.0/lambda)*Math.log(y);
+        return (-lambda)*Math.log(1 - y);
         
     }
 
