@@ -15,9 +15,12 @@ class Gen extends Proc{
 	public Proc sendTo;    //Anger till vilken process de genererade kunderna ska skickas //Where to send customers
 	public double lambda = 0.2;  //Hur m�nga per sekund som ska generas //How many to generate per second
 
-	public double exp(double d){
-		return -Math.log(1-slump.nextDouble()/d);
+	public double exp(double d) {
+			double rand = slump.nextDouble();
+			double logValue = Math.log(1 - rand);
+		return -logValue / d;
 	}
+
 
 	//H�r nedan anger man vad som ska g�ras n�r en signal kommer //What to do when a signal arrives
 
@@ -26,8 +29,9 @@ class Gen extends Proc{
 			case READY: {
 				SignalList.SendSignal(ARRIVAL, sendTo, time);
 				SignalList.SendSignal(READY, this, time + exp(lambda));
-				break;
+
 			}
+			break;
 		}
 	}
 	//(2.0/lambda)*slump.nextDouble())

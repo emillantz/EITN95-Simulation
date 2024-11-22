@@ -10,7 +10,7 @@ public class MainSimulationEvent extends GlobalSimulation{
 
 
     	// Some events must be put in the event list at the beginning
-        insertEvent(ARRIVAL, 0);  
+        insertEvent(ARRIVALTO1, 0);
         insertEvent(MEASURE, 5);
         
         // The main simulation loop
@@ -22,10 +22,10 @@ public class MainSimulationEvent extends GlobalSimulation{
     	
     	// Printing the result of the simulation, in this case a mean value
 
-		System.out.println("N1 = " + 1.0 * actState.q1 /actState.noMeasurements);
-		System.out.println("N2 = " + 1.0 * actState.q2 / actState.noMeasurements);
-		System.out.println("Rejection probability = " + 1.0 * actState.qRejected /
-				actState.qArrivals);
+		System.out.println(1.0 * actState.accumulatedQ1 /actState.noMeasurements);
+		System.out.println(1.0 * actState.accumulatedQ2 / actState.noMeasurements);
+		System.out.println("rejection "+ 1.0 * actState.queueRejected /
+				actState.queueArrivals);
 
     }
 }
