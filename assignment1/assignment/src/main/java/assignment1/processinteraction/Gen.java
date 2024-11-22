@@ -10,7 +10,7 @@ public class Gen extends Proc{
 
 	//Slumptalsgeneratorn startas:
 	//The random number generator is started:
-	Random slump = new Random();
+	public Random slump = new Random();
 
 	//Generatorn har tva parametrar:
 	//There are two parameters:
