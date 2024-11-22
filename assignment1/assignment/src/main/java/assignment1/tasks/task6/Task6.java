@@ -12,7 +12,9 @@ public class Task6 {
     private List<Part> parts;
     Signal actSignal;
     Machine machine;
+
     public void run() {
+        System.out.println("Task 6");
         this.init();
         while (numIters < 1000) {
             actSignal = SignalList.FetchSignal();
@@ -28,6 +30,8 @@ public class Task6 {
         }
         System.out.println("Simulation finished, + " + numIters + " iterations");
         System.out.println("Mean time: " + Global.time / numIters);
+
+        System.out.println("--------------------");
     }
 
     private void init() {

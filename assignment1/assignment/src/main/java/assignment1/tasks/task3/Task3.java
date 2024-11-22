@@ -12,7 +12,7 @@ import assignment1.assignment.src.main.java.assignment1.eventscheduling.GlobalSi
 
 public class Task3 extends GlobalSimulation {
     public void run() throws IOException {
-
+        System.out.println("Task 3");
         List<Double> means = new ArrayList<>(Arrays.asList(1.1, 1.5, 2.0));
 
 
@@ -20,8 +20,8 @@ public class Task3 extends GlobalSimulation {
             System.out.println("Stats for mean: " + mean + "\n");
             simLoop(mean);
         });
-
 }
+
     private void simLoop(double x) {
         Event actEvent;
         TaskState state = new TaskState(x);
