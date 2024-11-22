@@ -16,6 +16,7 @@ public class Part extends Proc {
         IDLE,
     }
     
+    private Machine machine;
     private Random r = new Random();
     private boolean broken = false;
     private List<Part> nodes;
@@ -37,7 +38,7 @@ public class Part extends Proc {
     }
 
     private int u() {
-        return this.r.nextInt(5) + 1; //Discrete uniform distribution (0-5)
+        return this.r.nextInt(5) + 1; //Discrete uniform distribution (1-5)
     }    
 
     private void create() {
@@ -53,12 +54,17 @@ public class Part extends Proc {
         }
         this.broken = true;
         
-        nodes.forEach(child -> {
+        this.nodes.forEach(child -> {
             SignalList.SendSignal(Global.BREAK, child, Global.time);
         });
+        SignalList.SendSignal(Global.BREAK, this.machine, Global.time);
     }
 
     public boolean isBroken() {
         return this.broken;
+    }
+
+    public void setMachine(Machine machine) {
+        this.machine = machine;
     }
 }

@@ -8,9 +8,9 @@ package assignment1.assignment.src.main.java.assignment1.processinteraction;
 // with more parameters. 
 
 public class SignalList{
-	private  static Signal list, last;
+	private static Signal list, last;
 
-	SignalList(){
+	public SignalList(){
     	list = new Signal();
     	last = new Signal();
     	list.next = last;
