@@ -6,7 +6,7 @@ import java.io.*;
 //Denna klass arver Proc, det gor att man kan anvanda time och signalnamn utan punktnotation
 //It inherits Proc so that we can use time and the signal names without dot notation 
 
-class Gen extends Proc{
+public class Gen extends Proc{
 
 	//Slumptalsgeneratorn startas:
 	//The random number generator is started:
