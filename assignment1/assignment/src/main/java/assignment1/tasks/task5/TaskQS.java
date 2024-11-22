@@ -1,9 +1,15 @@
+package assignment1.assignment.src.main.java.assignment1.tasks.task5;
+
+import assignment1.assignment.src.main.java.assignment1.processinteraction.Proc;
+import assignment1.assignment.src.main.java.assignment1.processinteraction.Signal;
+import assignment1.assignment.src.main.java.assignment1.processinteraction.SignalList;
+
+
 import java.util.*;
-import java.io.*;
 
 // This class defines a simple queuing system with one server. It inherits Proc so that we can use time and the
 // signal names without dot notation
-class QS extends Proc{
+class TaskQS extends Proc{
     public int numberInQueue = 0, accumulated, noMeasurements;
     public Proc sendTo;
     Random slump = new Random();
@@ -12,7 +18,8 @@ class QS extends Proc{
         double y = slump.nextDouble();
         return (-lambda)*Math.log(1 - y);
     }
-
+    
+    @Override
     public void TreatSignal(Signal x){
         switch (x.signalType){
 

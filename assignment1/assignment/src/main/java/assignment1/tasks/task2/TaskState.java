@@ -1,8 +1,13 @@
+package assignment1.assignment.src.main.java.assignment1.tasks.task2;
+
+import assignment1.assignment.src.main.java.assignment1.eventscheduling.GlobalSimulation;
+import assignment1.assignment.src.main.java.assignment1.eventscheduling.Event;
+
 import java.util.*;
 import java.io.*;
 import java.math.*;
 
-class State extends GlobalSimulation{
+class TaskState extends GlobalSimulation{
 	private double xa = 0.002, xb = 0.004, lambda = 1.0/150.0;
 	private double d = 1.0;
 	// Here follows the state variables and other variables that might be needed

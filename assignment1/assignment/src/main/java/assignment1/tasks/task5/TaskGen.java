@@ -1,14 +1,20 @@
+package assignment1.assignment.src.main.java.assignment1.tasks.task5;
+
+import assignment1.assignment.src.main.java.assignment1.processinteraction.Proc;
+import assignment1.assignment.src.main.java.assignment1.processinteraction.Signal;
+import assignment1.assignment.src.main.java.assignment1.processinteraction.SignalList;
+
 import java.util.*;
 import java.io.*;
 
 //It inherits Proc so that we can use time and the signal names without dot notation 
 
-class Gen extends Proc{
+class TaskGen extends Proc{
 
 
     //The random number generator is started:
     Random slump = new Random();
-    public ArrayList<QS> sendToList = new ArrayList<>();
+    public ArrayList<TaskQS> sendToList = new ArrayList<>();
 
 
     //There are two parameters:
@@ -16,6 +22,7 @@ class Gen extends Proc{
     public double lambda;  
     private int count = 0;
     //What to do when a signal arrives
+    @Override
     public void TreatSignal(Signal x){
         switch (x.signalType){
             case READY:{
@@ -38,14 +45,14 @@ class Gen extends Proc{
 
     private Proc smallestFirst() {
         int min = Integer.MAX_VALUE;
-        ArrayList<QS> minList = new ArrayList<>();
-        for (QS q : sendToList) {
+        ArrayList<TaskQS> minList = new ArrayList<>();
+        for (TaskQS q : sendToList) {
             if (q.numberInQueue < min) {
                 min = q.numberInQueue;
                 
             }
         }
-        for (QS q : sendToList) {
+        for (TaskQS q : sendToList) {
             if(q.numberInQueue == min) {
                 minList.add(q);
             }

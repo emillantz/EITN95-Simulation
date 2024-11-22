@@ -8,7 +8,8 @@ public class GlobalSimulation{
 	// MainSimulation.java and State.java simpler (no dot notation is needed).
     
 	// The events, add or remove if needed!
-	public static final int Q1_ARRIVAL = 1, Q1_READY = 2, Q2_ARRIVAL = 3, Q2_READY = 4, MEASURE = 5; 
+	public static final int Q1_ARRIVAL = 1, Q1_READY = 2, Q2_ARRIVAL = 3, Q2_READY = 4, MEASURE = 5, 
+           ARRIVALXA = 6, READYXA = 7, ARRIVALXB = 8, READYXB = 9; 
 	public static double time = 0; // The global time variable
 	public static EventListClass eventList = new EventListClass(); // The event list used in the program
 	public static void insertEvent(int type, double TimeOfEvent){  // Just to be able to skip dot notation
