@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Task6 {
-
     private int numIters = 0;
     private List<Part> parts;
     Signal actSignal;

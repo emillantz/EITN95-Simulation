@@ -10,7 +10,7 @@ import assignment1.assignment.src.main.java.assignment1.eventscheduling.Event;
 import assignment1.assignment.src.main.java.assignment1.eventscheduling.GlobalSimulation;
 
 
-public class Task3 extends GlobalSimulation{
+public class Task3 extends GlobalSimulation {
     public void run() throws IOException {
 
         List<Double> means = new ArrayList<>(Arrays.asList(1.1, 1.5, 2.0));
@@ -41,10 +41,10 @@ public class Task3 extends GlobalSimulation{
 
         System.out.println("Mean time (simulated): " + simMeanTime);
         System.out.println("Mean time (theoretical): " + t);
-        System.out.println("Diff (sim - theoretical ): " + (simMeanTime - t) + "\n\n");
+        System.out.println(String.format("Diff : %.4f \n\n", Math.abs(simMeanTime - t)));
         System.out.println("Mean number of customers in queue (simulated): " + simMeanQueue);
         System.out.println("Mean number of customers in queue (theoretical): " + n);
-        System.out.println("Diff (sim - theoretical): " + (simMeanQueue - n) + "\n\n");
+        System.out.println(String.format("Diff : %.4f \n\n", Math.abs(simMeanQueue - n)));
         System.out.println("--------------------------------------------------------");
     }
 }
