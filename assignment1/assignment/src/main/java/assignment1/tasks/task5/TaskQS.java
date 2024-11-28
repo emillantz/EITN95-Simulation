@@ -16,7 +16,7 @@ class TaskQS extends Proc{
 
     private double exp(double lambda) {
         double y = slump.nextDouble();
-        return (-lambda)*Math.log(1 - y);
+        return (-1/lambda)*Math.log(1 - y);
     }
     
     @Override
