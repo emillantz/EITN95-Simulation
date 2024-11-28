@@ -28,7 +28,7 @@ class TaskGen extends Proc{
             case READY:{
                 sendTo = roundRobin();
                 SignalList.SendSignal(ARRIVAL, sendTo, time);
-                SignalList.SendSignal(READY, this, time + (2.0/lambda)*slump.nextDouble());}
+                SignalList.SendSignal(READY, this, time + 2 * lambda *slump.nextDouble());}
                 break;
         }
     }

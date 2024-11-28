@@ -32,7 +32,7 @@ public class Task5 extends Global {
         Q5.sendTo = null;
 
         TaskGen Generator = new TaskGen();
-        Generator.lambda = 10;
+        Generator.lambda = 2.0; //0.11 or 0.15 or 2.0
         Generator.sendToList = new ArrayList<TaskQS>(Arrays.asList(Q1, Q2, Q3, Q4, Q5));
         ;
 
