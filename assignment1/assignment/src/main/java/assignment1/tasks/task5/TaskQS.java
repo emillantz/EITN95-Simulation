@@ -1,50 +1,42 @@
-package assignment1.assignment.src.main.java.assignment1.tasks.task5;
-
-import assignment1.assignment.src.main.java.assignment1.processinteraction.Proc;
-import assignment1.assignment.src.main.java.assignment1.processinteraction.Signal;
-import assignment1.assignment.src.main.java.assignment1.processinteraction.SignalList;
-
-
 import java.util.*;
+import java.io.*;
 
 // This class defines a simple queuing system with one server. It inherits Proc so that we can use time and the
 // signal names without dot notation
-class TaskQS extends Proc{
-    public int numberInQueue = 0, accumulated, noMeasurements;
-    public Proc sendTo;
-    Random slump = new Random();
+class QS extends Proc {
+	public int numberInQueue = 0, accumulated, noMeasurements;
+	public Proc sendTo;
+	Random slump = new Random();
 
-    private double exp(double lambda) {
-        double y = slump.nextDouble();
-        return (-1/lambda)*Math.log(1 - y);
-    }
-    
-    @Override
-    public void TreatSignal(Signal x){
-        switch (x.signalType){
+	private double exp(double lambda) {
+		double y = slump.nextDouble();
+		return (Math.log(1 - y) / (-1 / lambda));
+	}
 
-            case ARRIVAL:{
-                numberInQueue++;
-                if (numberInQueue == 1){
-                    SignalList.SendSignal(READY,this, time + exp(0.5));
-                }
-            } break;
+	public void TreatSignal(Signal x) {
+		switch (x.signalType) {
 
-            case READY:{
-                numberInQueue--;
-                if (sendTo != null){
-                    SignalList.SendSignal(ARRIVAL, sendTo, time);
-                }
-                if (numberInQueue > 0){
-                    SignalList.SendSignal(READY, this, time + exp(0.5));
-                }
-            } break;
+			case ARRIVAL: {
+				if (numberInQueue == 0) {
+					SignalList.SendSignal(READY, this, time + exp(0.5));
+				}
+				numberInQueue++;
+			}
+				break;
 
-            case MEASURE:{
-                noMeasurements++;
-                accumulated = accumulated + numberInQueue;
-                SignalList.SendSignal(MEASURE, this, time + 2*slump.nextDouble());
-            } break;
-        }
-    }
+			case READY: {
+				numberInQueue--;
+				if (numberInQueue > 0) {
+					SignalList.SendSignal(READY, this, time + exp(0.5));
+				}
+			}
+				break;
+			case MEASURE: {
+				noMeasurements++;
+				accumulated = accumulated + numberInQueue;
+				SignalList.SendSignal(MEASURE, this, time + 2.0 * slump.nextDouble());
+			}
+				break;
+		}
+	}
 }
