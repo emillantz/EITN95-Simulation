@@ -11,6 +11,6 @@ public class Assignment {
         Task3 task3 = new Task3();
 
         task2.run();
-        //task3.run();
+        task3.run();
     }
 }
