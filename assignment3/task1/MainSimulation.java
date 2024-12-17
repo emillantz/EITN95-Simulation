@@ -1,5 +1,10 @@
 import java.util.*;
 import java.io.*;
+import org.json.JSONObject;
+import org.json.JSONArray;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 
 //Denna klass �rver Global s� att man kan anv�nda time och signalnamnen utan punktnotation
 //It inherits Proc so that we can use time and the signal names without dot notation
@@ -10,7 +15,7 @@ public class MainSimulation extends Global{
     public static void main(String[] args) throws IOException {
 
     	//Signallistan startas och actSignal deklareras. actSignal �r den senast utplockade signalen i huvudloopen nedan.
-    	// The signal list is started and actSignal is declaree. actSignal is the latest signal that has been fetched from the 
+    	// The signal list is started and actSignal is declaree. actSignal is the latest signal that has been fetched from the
     	// signal list in the main loop below.
 
     	Signal actSignal;
@@ -20,7 +25,7 @@ public class MainSimulation extends Global{
 		gateway.sendTo = null;
 
     	//H�r nedan skapas de processinstanser som beh�vs och parametrar i dem ges v�rden.
-    	// Here process instances are created (two queues and one generator) and their parameters are given values. 
+    	// Here process instances are created (two queues and one generator) and their parameters are given values.
 
 
 		// Parameters, should be read from file
