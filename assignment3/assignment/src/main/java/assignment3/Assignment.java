@@ -3,12 +3,15 @@
  */
 package assignment3;
 
+import assignment3.assignment.src.main.java.assignment3.tasks.task1.Task1;
 import assignment3.assignment.src.main.java.assignment3.tasks.task2.Task2;
 
 public class Assignment {
     public static void main(String[] args) {
-        Task2 task2 = new Task2();
+        Task1 task1 = new Task1();
+        task1.run();
 
-        task2.run(false, 1000);
+//        Task2 task2 = new Task2();
+//        task2.run(false, 1000);
     }
 }
