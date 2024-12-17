@@ -20,9 +20,17 @@ public class Sensor extends Proc {
         return (-lambda) * Math.log(1 - slump.nextDouble());
     }
 
+    // public boolean checkCollision(Sensor s1, Sensor s2) {
+    //     double distance = Math.sqrt(Math.pow(s1.x - s2.x, 2) + Math.pow(s1.y - s2.y, 2));
+    //     return distance < s1.radius + s2.radius;
+    // }
+
+    
     public boolean checkCollision(Sensor s1, Sensor s2) {
-        double distance = Math.sqrt(Math.pow(s1.x - s2.x, 2) + Math.pow(s1.y - s2.y, 2));
-        return distance < s1.radius + s2.radius;
+        double xDiff = Math.pow(s2.x - s1.x,2);
+		double yDiff = Math.pow(s2.y - s1.y, 2);
+		
+		return Math.sqrt(xDiff + yDiff) < s2.radius;
     }
 
     private double uniformSleep() {
