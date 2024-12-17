@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collectors;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -10,6 +11,16 @@ import java.nio.file.Paths;
 
 public class MainSimulation extends Global{
 
+    private class Coordinate {
+        public double x;
+        public double y;
+
+        public Coordinate(double x, double y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
     private class Config {
         public int n;
         public double tp;
@@ -18,13 +29,10 @@ public class MainSimulation extends Global{
         public double ub;
         public double lb;
         public Sensor[] sensors;
+        public List<Coordinate> coordinates;
 
         public Config(String path) {
-            try {
-                parseCsv(path);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            parseCsv(path);
         }
 
         private void parseCsv(String path) {
@@ -38,6 +46,10 @@ public class MainSimulation extends Global{
                 this.lb = Double.parseDouble(values[4]);
                 this.ub = Double.parseDouble(values[5]);
                 this.sensors = new Sensor[n];
+                this.coordinates = lines.stream().skip(2).map(line -> {
+                    String[] vals = line.split(",");
+                    return new Coordinate(Double.parseDouble(vals[0]), Double.parseDouble(vals[1]));
+                }).collect(Collectors.toList());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -72,10 +84,12 @@ public class MainSimulation extends Global{
 		double x, y;
 		double lb = config.lb;
 		double ub = config.ub;
+        List<Coordinate> coordinates = config.coordinates;
 
 		for (int i = 0; i < n; i++) {
-			x = Math.random() * n; // Read from file
-			y = Math.random() * n; // Read from file
+            Coordinate coord = coordinates.get(i);
+			x = coord.x; // Read from file
+			y = coord.y; // Read from file
 			sensors[i] = new Sensor(x, y, r, ts, tp, gateway);
 			sensors[i].lb = lb;
 			sensors[i].ub = ub;

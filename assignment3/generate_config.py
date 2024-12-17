@@ -1,4 +1,5 @@
 import argparse
+from random import random
 
 def main():
     parser = argparse.ArgumentParser(prog='generate_config.py', description='Generate configuration file for the simulation')
@@ -13,8 +14,11 @@ def main():
     print(args)
 
     with open('config.csv', 'w') as f:
-        f.write('nodes,tp,ts,radius,lower,upper\n')
         f.write(f'{args.nodes},{args.tp},{args.ts},{args.radius},{args.lower},{args.upper}\n')
+        for _ in range(args.nodes):
+            x = random() * 10
+            y = random() * 10
+            f.write(f'{x},{y}\n')
 
 if __name__ == '__main__':
     main()
