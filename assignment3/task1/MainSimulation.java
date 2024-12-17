@@ -1,7 +1,5 @@
 import java.util.*;
 import java.io.*;
-import org.json.JSONObject;
-import org.json.JSONArray;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -11,6 +9,40 @@ import java.nio.file.Paths;
 
 
 public class MainSimulation extends Global{
+
+    private class Config {
+        public int n;
+        public double tp;
+        public double ts;
+        public double r;
+        public double ub;
+        public double lb;
+        public Sensor[] sensors;
+
+        public Config(String path) {
+            try {
+                parseCsv(path);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        private void parseCsv(String path) {
+            try {
+                List<String> lines = Files.readAllLines(Paths.get(path));
+                String[] values = lines.get(1).split(",");
+                this.n = Integer.parseInt(values[0]);
+                this.tp = Double.parseDouble(values[1]);
+                this.ts = Double.parseDouble(values[2]);
+                this.r = Double.parseDouble(values[3]);
+                this.lb = Double.parseDouble(values[4]);
+                this.ub = Double.parseDouble(values[5]);
+                this.sensors = new Sensor[n];
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     public static void main(String[] args) throws IOException {
 
@@ -29,14 +61,17 @@ public class MainSimulation extends Global{
 
 
 		// Parameters, should be read from file
-		int n = 1000;
-		double tp = 1;
-		double ts = 4000;
-		double r = 7;
+
+        Config config = new Config("config.csv");
+
+		int n = config.n;
+		double tp = config.tp;
+		double ts = config.ts;
+		double r = config.r;
 		Sensor[] sensors = new Sensor[n];
 		double x, y;
-		double ub = 3000;
-		double lb = 1000;
+		double lb = config.lb;
+		double ub = config.ub;
 
 		for (int i = 0; i < n; i++) {
 			x = Math.random() * n; // Read from file
