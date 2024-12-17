@@ -38,7 +38,7 @@ public class MainSimulation extends Global{
         private void parseCsv(String path) {
             try {
                 List<String> lines = Files.readAllLines(Paths.get(path));
-                String[] values = lines.get(1).split(",");
+                String[] values = lines.get(0).split(",");
                 this.n = Integer.parseInt(values[0]);
                 this.tp = Double.parseDouble(values[1]);
                 this.ts = Double.parseDouble(values[2]);
@@ -46,7 +46,7 @@ public class MainSimulation extends Global{
                 this.lb = Double.parseDouble(values[4]);
                 this.ub = Double.parseDouble(values[5]);
                 this.sensors = new Sensor[n];
-                this.coordinates = lines.stream().skip(2).map(line -> {
+                this.coordinates = lines.stream().skip(1).map(line -> {
                     String[] vals = line.split(",");
                     return new Coordinate(Double.parseDouble(vals[0]), Double.parseDouble(vals[1]));
                 }).collect(Collectors.toList());
